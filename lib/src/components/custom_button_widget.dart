@@ -1,55 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
+import '../config/utils/app_colors.dart';
+import '../config/utils/helper.dart';
 import 'custom_text_widget.dart';
 
-class CustomButtonWidget extends StatelessWidget {
-  final double width;
-  final double height;
-  final Color color;
-  final Color titleColor;
-  final Color borderColor;
-  final String title;
-  final VoidCallback onTap;
-  final bool isLoading;
+class CustomButton extends StatelessWidget {
+  String title;
+  double height;
 
-  const CustomButtonWidget({
-    super.key,
-    this.isLoading = false,
-    required this.width,
-    this.borderColor = Colors.transparent,
-    required this.height,
-    this.titleColor = Colors.white,
-    required this.color,
-    required this.title,
-    required this.onTap,
-  });
+  double width;
+  VoidCallback onTap;
+  double borderRadius;
+  CustomButton(
+      {super.key,
+      required this.borderRadius,
+      required this.height,
+      required this.width,
+      required this.onTap,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: width,
-        height: height,
+        alignment: Alignment.center,
+        width: mediaQueryWidth(width), // Width (Hug 100px)
+        height: mediaQueryHeight(height), // Height (Hug 29px)
+
         decoration: BoxDecoration(
-          color: color,
-          border: Border.all(
-              color: borderColor ),
-          borderRadius:
-              BorderRadius.circular(8.0), // Add rounded corners if desired
+          gradient: const LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: [primaryGreen, primaryGreenGradient], // Gradient colors
+          ),
+          borderRadius: BorderRadius.circular(borderRadius), // Border radius
         ),
-        child: Center(
-          child: isLoading
-              ? const CircularProgressIndicator(
-                  color: Colors.white,
-                )
-              : KText(
-                  text: title,
-                  fontColor: titleColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-        ),
+        child: KText(
+            text: title,
+            fontWeight: FontWeight.w700,
+            fontSize: mediaQueryWidth(12),
+            fontColor: Colors.white),
       ),
     );
   }

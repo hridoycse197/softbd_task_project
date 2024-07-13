@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:softbd_task_project/src/pages/widgets/date_selector_widget.dart';
 
+import '../components/custom_button_widget.dart';
 import '../components/gridview_element_widget.dart';
 import '../config/utils/app_colors.dart';
 import 'widgets/time_management_widget.dart';
@@ -54,28 +55,11 @@ class _TimeLinePageState extends State<TimeLinePage> {
                     fontWeight: FontWeight.w700,
                     fontSize: mediaQueryWidth(16),
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    width: mediaQueryWidth(110.0), // Width (Hug 100px)
-                    height: mediaQueryHeight(30.0), // Height (Hug 29px)
+                  CustomButton(
+                    width: 110.0, // Width (Hug 100px)
+                    height: 30.0, // Height (Hug 29px)
 
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          primaryGreen,
-                          primaryGreenGradient
-                        ], // Gradient colors
-                      ),
-                      borderRadius:
-                          BorderRadius.circular(24.0), // Border radius
-                    ),
-                    child: KText(
-                        text: 'নতুন যোগ করুন',
-                        fontWeight: FontWeight.w700,
-                        fontSize: mediaQueryWidth(12),
-                        fontColor: Colors.white),
+                    title: 'নতুন যোগ করুন', borderRadius: 5.0, onTap: () {},
                   ),
                 ],
               ),
