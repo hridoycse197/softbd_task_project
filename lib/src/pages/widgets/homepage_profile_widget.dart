@@ -57,12 +57,12 @@ class HomePageProfileWidget extends StatelessWidget {
                 KText(
                   text: 'মোঃ মোহাইমেনুল রেজা',
                   fontWeight: FontWeight.w700,
-                  fontSize: mediaQueryWidth(20),
+                   fontSize: mediaQueryFontSize(20),
                 ),
                 KText(
                   text: 'সফটবিডি লিমিটেড',
                   fontWeight: FontWeight.w400,
-                  fontSize: mediaQueryWidth(14),
+                   fontSize: mediaQueryFontSize(14),
                   fontColor: fontColorsecondary,
                 ),
                 Row(
@@ -74,7 +74,7 @@ class HomePageProfileWidget extends StatelessWidget {
                     KText(
                       text: 'ঢাকা',
                       fontWeight: FontWeight.w400,
-                      fontSize: mediaQueryWidth(14),
+                       fontSize: mediaQueryFontSize(14),
                       fontColor: fontColorsecondary,
                     ),
                   ],

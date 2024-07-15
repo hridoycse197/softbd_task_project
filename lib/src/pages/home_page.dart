@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:softbd_task_project/src/components/custom_text_widget.dart';
 import 'package:softbd_task_project/src/components/space_vertical_widget.dart';
 import 'package:softbd_task_project/src/config/utils/helper.dart';
 
@@ -14,6 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: white,
       body: SafeArea(
           child: Center(

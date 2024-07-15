@@ -1,3 +1,3 @@
 class ENV {
-  static const baseUrl = 'https://apptest.dokandemo.com/wp-json';
+  static const baseUrl = 'https://api.npoint.io';
 }

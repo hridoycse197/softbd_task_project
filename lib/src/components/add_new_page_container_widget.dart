@@ -11,21 +11,21 @@ class AddNewPageContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.center,
-        height: mediaQueryHeight(35),
+        height: mediaQueryHeight(65),
         padding: EdgeInsets.symmetric(horizontal: mediaQueryWidth(15)),
         width: mediaQueryWidth(327),
         decoration: BoxDecoration(
-            color: addNewPageContainerBg.withOpacity(.4),
+            color: white,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
-                  color: grey,
+                  color: grey.withOpacity(.2),
                   offset: Offset(1, 1),
                   spreadRadius: .5,
                   blurRadius: 1,
                   blurStyle: BlurStyle.outer),
               BoxShadow(
-                  color: grey,
+                  color: grey.withOpacity(.2),
                   offset: Offset(1, -1),
                   spreadRadius: .5,
                   blurStyle: BlurStyle.outer,

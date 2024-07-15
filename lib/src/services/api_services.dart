@@ -1,7 +1,11 @@
+import 'dart:convert';
 import 'dart:core';
+import 'dart:io';
 import 'package:dio/dio.dart';
+import '../config/utils/app_exceptions.dart';
 import '../config/utils/env.dart';
 import '../config/utils/helper.dart';
+import '../helpers/snackbar_helper.dart';
 
 mixin ApiService {
   final _dio = Dio();
@@ -12,7 +16,6 @@ mixin ApiService {
     bool authentication = false,
   }) async {
     try {
-      // final latLng = await locationC.getCurrentLocation();
       final response = await _dio.get(
         '${ENV.baseUrl}/$path',
         queryParameters: queryParameters,
@@ -26,39 +29,26 @@ mixin ApiService {
           },
         ),
       );
-      return response;
-    } catch (e) {
-      kLog(e);
-      throw ('Something went wrong');
+
+      return returnResponse(response);
+    } on SocketException {
+      SnackbarHelper.errorSnackbar(
+          'No Internet', 'Connect Internet and Try again');
+      throw InternetException();
+    } on RequestTimeOut {
+      throw RequestTimeOut('');
     }
   }
 
-  Future<Response?> post({
-    required String path,
-    Map<String, dynamic>? body,
-  }) async {
-    try {
- 
-      kLog('${ENV.baseUrl}/$path');
-      // final latLng = await locationC.getCurrentLocation();
-      final response = await _dio.post(
-        '${ENV.baseUrl}/$path',
-        data: body,
-        options: Options(
-          followRedirects: false,
-          // will not throw errors
-          validateStatus: (status) => true,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        ),
-      );
-      return response;
-    } catch (e, s) {
-      kLog(e);
-      kError(s);
-    } finally {
+  dynamic returnResponse(Response response) {
+    switch (response.statusCode) {
+      case 200:
+        dynamic responseJson = response;
+        return responseJson;
+
+      default:
+        throw FetchDataException(
+            'Error accoured while communicating with server ${response.statusCode}');
     }
-    return null;
   }
 }

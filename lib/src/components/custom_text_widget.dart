@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -10,12 +8,13 @@ class KText extends StatelessWidget {
   Color fontColor;
   double fontSize;
   TextDecoration textDecoration;
-
+  TextAlign textAlign;
   TextOverflow? textOverflow;
   FontWeight? fontWeight;
   KText(
       {super.key,
       required this.text,
+      this.textAlign = TextAlign.left,
       this.textDecoration = TextDecoration.none,
       this.fontWeight,
       this.fontSize = 12,
@@ -26,6 +25,7 @@ class KText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      textAlign: textAlign,
       textScaler: const TextScaler.linear(1.0),
       text,
       maxLines: maxLines,
@@ -39,4 +39,3 @@ class KText extends StatelessWidget {
     );
   }
 }
-

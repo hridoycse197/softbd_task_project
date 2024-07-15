@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:softbd_task_project/src/base/base.dart';
+import 'package:softbd_task_project/src/models/data_model.dart';
 
 import '../config/utils/helper.dart';
 
 class IsarService extends GetxService {
   late Isar isar;
 
-  final schemaList = [
-   
-  ];
+  final schemaList = [DataModelSchema];
 
   @override
   void onInit() async {
@@ -26,6 +26,8 @@ class IsarService extends GetxService {
       );
 
       kLog('Isar DB Initialized');
+
+      Base.dataC;
     } catch (e, s) {
       kLog(s);
       kError(e);
@@ -38,6 +40,10 @@ class IsarService extends GetxService {
         () async => await isar.collection<T>().get(
               hashId(id),
             ),
+      );
+
+  Future<Stream?> valueListenable<T>() async => isar.writeTxn(
+        () async => isar.collection<T>().watchLazy(),
       );
   // -------------------------------------------------------------
 

@@ -27,7 +27,7 @@ class GridViewElement extends StatelessWidget {
         KText(
           text: title,
           fontWeight: FontWeight.w600,
-          fontSize: mediaQueryWidth(16),
+           fontSize: mediaQueryFontSize(16),
         )
       ],
     );

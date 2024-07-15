@@ -38,9 +38,11 @@ dependencies:
   isar: ^3.1.0+1
   stylish_bottom_bar: ^1.1.0
   google_fonts: ^6.2.1
+  isar_flutter_libs:
   dio: ^5.5.0+1
   dashed_circular_progress_bar: ^0.0.6
   intl: ^0.19.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +54,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  build_runner:
+  isar_generator:
+  json_serializable:
+  analyzer:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
